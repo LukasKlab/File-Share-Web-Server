@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "ws": "^8.5.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "file-share-web-server",
+  "description": "A file sharing service that runs on a website for filetransfer anywhere in the world.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasKlab/File-Share-Web-Server.git"
+  },
+  "author": "Lukas Andre Bendiksen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukasKlab/File-Share-Web-Server/issues"
+  },
+  "homepage": "https://github.com/LukasKlab/File-Share-Web-Server#readme"
+}
