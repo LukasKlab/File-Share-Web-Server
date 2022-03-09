@@ -16,7 +16,7 @@ function init() {
     ws.close();
   }
 
-  ws = new WebSocket("ws://localhost:443");
+  ws = new WebSocket("ws://localhost:80", "echo-protocol");
   ws.onopen = () => {
     console.log("Connection opened!");
   };
