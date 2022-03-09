@@ -8,7 +8,7 @@ const port = 443;
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-app.use(express.static(path.join(__dirname, "public"))); // Hosting static files, html files, javacript file. Everything that isn't dynamic redirects to public directory
+// app.use(express.static(path.join(__dirname, "public"))); // Hosting static files, html files, javacript file. Everything that isn't dynamic redirects to public directory
 
 wss.on("connection", function connection(ws) {
   // Checks for a connection
