@@ -1,17 +1,28 @@
+const path = require("path");
+const express = require("express");
+const http = require("http");
 const WebSocket = require("ws");
 
-const wss = new WebSocket.Server({ port: 8082 });
+const app = express();
+const port = 8080;
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
-wss.on("connection", (ws) => {
-  console.log("New client connected!");
+app.use(express.static(path.join(__dirname, "public"))); // Hosting static files, html files, javacript file. Everything that isn't dynamic redirects to public directory
 
-  ws.on("message", (data) => {
-    console.log(`Client has sent us ${data}`);
+wss.on("connection", function connection(ws) {
+  // Checks for a connection
 
-    ws.send(data);
+  ws.on("message", function incoming(data) {
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        //client.send(JSON.stringify({ data }));
+        client.send(data.toString());
+      }
+    });
   });
+});
 
-  ws.on("close", () => {
-    console.log("Client has disconnected!");
-  });
+server.listen(port, function () {
+  console.log(`Server is  listening on ${port}`);
 });
