@@ -16,7 +16,7 @@ function init() {
     ws.close();
   }
 
-  ws = new WebSocket("wws://labindustries.net:443");
+  ws = new WebSocket("ws://labindustries.net:443");
   ws.onopen = () => {
     console.log("Connection opened!");
   };
